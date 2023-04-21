@@ -1,0 +1,173 @@
+[
+    {
+        "id": "52551694ed05339c",
+        "type": "subflow",
+        "name": "chatgpt",
+        "info": "",
+        "category": "analysis",
+        "in": [
+            {
+                "x": 40,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "f43216aad8d734ee"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 500,
+                "y": 160,
+                "wires": [
+                    {
+                        "id": "50afab390b7cde1e",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "APIKEY",
+                "type": "cred",
+                "ui": {
+                    "icon": "font-awesome/fa-lock",
+                    "label": {
+                        "en-US": "API KEY"
+                    },
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "cred"
+                        ]
+                    }
+                }
+            }
+        ],
+        "meta": {
+            "module": "node-red-contrib-chatgpt",
+            "type": "chatgpt",
+            "version": "0.0.1",
+            "author": "Kazuhito Yokoi <kazuhitoyokoi@nodered.jp>",
+            "desc": "Node-RED node to access ChatGPT API",
+            "keywords": "node-red,chatgpt,openai",
+            "license": "Apache-2.0"
+        },
+        "credentials": {
+            "APIKEY": ""
+        },
+        "color": "#3FADB5",
+        "icon": "node-red/comment.svg"
+    },
+    {
+        "id": "1865d3ba1821c8d0",
+        "type": "http request",
+        "z": "52551694ed05339c",
+        "name": "",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://api.openai.com/v1/chat/completions",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 170,
+        "y": 160,
+        "wires": [
+            [
+                "50afab390b7cde1e"
+            ]
+        ]
+    },
+    {
+        "id": "50afab390b7cde1e",
+        "type": "change",
+        "z": "52551694ed05339c",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.choices[0].message.content",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 360,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f43216aad8d734ee",
+        "type": "template",
+        "z": "52551694ed05339c",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "json",
+        "syntax": "mustache",
+        "template": "{\n    \"model\": \"gpt-3.5-turbo\",\n    \"messages\": [\n        {\n            \"role\": \"user\",\n            \"content\": \"{{payload}}\"\n        }\n    ],\n    \"temperature\": 0.7\n}",
+        "output": "json",
+        "x": 160,
+        "y": 80,
+        "wires": [
+            [
+                "12ef5b1a45f5323d"
+            ]
+        ]
+    },
+    {
+        "id": "12ef5b1a45f5323d",
+        "type": "template",
+        "z": "52551694ed05339c",
+        "name": "",
+        "field": "headers.Authorization",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Bearer {{env.APIKEY}}",
+        "output": "str",
+        "x": 320,
+        "y": 80,
+        "wires": [
+            [
+                "1865d3ba1821c8d0"
+            ]
+        ]
+    },
+    {
+        "id": "73fb8e235f5171f5",
+        "type": "subflow:52551694ed05339c",
+        "z": "d39855fe4a029e6e",
+        "name": "",
+        "env": [
+            {
+                "name": "APIKEY",
+                "type": "cred"
+            }
+        ],
+        "x": 300,
+        "y": 240,
+        "wires": [
+            [
+                "ddadf939a8358f0a",
+                "806dabcf97435032",
+                "11edbc4cec00dacc",
+                "295b359b663c7240"
+            ]
+        ]
+    }
+]
