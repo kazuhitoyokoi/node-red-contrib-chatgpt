@@ -1,0 +1,74 @@
+[
+    {
+        "id": "53dc57eed943c333",
+        "type": "inject",
+        "z": "d39855fe4a029e6e",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Say this is a test!",
+        "payloadType": "str",
+        "x": 140,
+        "y": 100,
+        "wires": [
+            [
+                "f5e4ba33f2c1010c"
+            ]
+        ]
+    },
+    {
+        "id": "ddadf939a8358f0a",
+        "type": "debug",
+        "z": "d39855fe4a029e6e",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 480,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "f5e4ba33f2c1010c",
+        "type": "chatgpt",
+        "z": "d39855fe4a029e6e",
+        "name": "",
+        "APIKEY": "",
+        "credentials": {
+            "APIKEY": ""
+        },
+        "x": 320,
+        "y": 100,
+        "wires": [
+            [
+                "ddadf939a8358f0a"
+            ]
+        ]
+    },
+    {
+        "id": "a065275fa14d97ac",
+        "type": "comment",
+        "z": "d39855fe4a029e6e",
+        "name": "Paste API Key",
+        "info": "",
+        "x": 330,
+        "y": 60,
+        "wires": []
+    }
+]
