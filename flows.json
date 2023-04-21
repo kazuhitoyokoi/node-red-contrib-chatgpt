@@ -49,7 +49,7 @@
         "meta": {
             "module": "node-red-contrib-chatgpt",
             "type": "chatgpt",
-            "version": "0.0.3",
+            "version": "0.0.5",
             "author": "Kazuhito Yokoi <kazuhitoyokoi@nodered.jp>",
             "desc": "Node-RED node to access ChatGPT API",
             "keywords": "node-red,chatgpt,openai",
