@@ -1,0 +1,126 @@
+[
+    {
+        "id": "bc5a22892afe2610",
+        "type": "ui_microphone",
+        "z": "d39855fe4a029e6e",
+        "name": "",
+        "group": "8e4c6656eeb6d062",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "maxLength": 5,
+        "maxRecogLength": 5,
+        "timeslice": 0,
+        "press": "press",
+        "mode": "recog",
+        "interimResults": false,
+        "x": 230,
+        "y": 260,
+        "wires": [
+            [
+                "11edbc4cec00dacc",
+                "6741953b75dbd0de"
+            ]
+        ]
+    },
+    {
+        "id": "806dabcf97435032",
+        "type": "ui_audio",
+        "z": "d39855fe4a029e6e",
+        "name": "",
+        "group": "8e4c6656eeb6d062",
+        "voice": "Google US English",
+        "always": "",
+        "x": 560,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "e35721a4fd92063b",
+        "type": "ui_text",
+        "z": "d39855fe4a029e6e",
+        "group": "8e4c6656eeb6d062",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "ChatGPT response",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 530,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "11edbc4cec00dacc",
+        "type": "ui_text",
+        "z": "d39855fe4a029e6e",
+        "group": "8e4c6656eeb6d062",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Audio input",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 330,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "6741953b75dbd0de",
+        "type": "chatgpt",
+        "z": "d39855fe4a029e6e",
+        "name": "",
+        "APIKEY": "",
+        "x": 400,
+        "y": 260,
+        "wires": [
+            [
+                "806dabcf97435032",
+                "e35721a4fd92063b"
+            ]
+        ]
+    },
+    {
+        "id": "f478f16f555eb987",
+        "type": "comment",
+        "z": "d39855fe4a029e6e",
+        "name": "Paste API Key",
+        "info": "",
+        "x": 410,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "9622cadb5f56e9ad",
+        "type": "comment",
+        "z": "d39855fe4a029e6e",
+        "name": "Install node-red-dashboard and node-red-node-ui-microphone",
+        "info": "",
+        "x": 390,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "8e4c6656eeb6d062",
+        "type": "ui_group",
+        "name": "Default",
+        "tab": "4f5ae55c392280f0",
+        "order": 1,
+        "disp": false,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "4f5ae55c392280f0",
+        "type": "ui_tab",
+        "name": "Smart Speaker using ChatGPT",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]

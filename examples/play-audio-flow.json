@@ -1,0 +1,76 @@
+[
+    {
+        "id": "295b359b663c7240",
+        "type": "play audio",
+        "z": "d39855fe4a029e6e",
+        "name": "",
+        "voice": "144",
+        "x": 490,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "2f2acad49c5b47b6",
+        "type": "inject",
+        "z": "d39855fe4a029e6e",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Say this is a test!",
+        "payloadType": "str",
+        "x": 140,
+        "y": 180,
+        "wires": [
+            [
+                "ce946a0a65a62bdf"
+            ]
+        ]
+    },
+    {
+        "id": "ce946a0a65a62bdf",
+        "type": "chatgpt",
+        "z": "d39855fe4a029e6e",
+        "name": "",
+        "APIKEY": "",
+        "credentials": {},
+        "x": 320,
+        "y": 180,
+        "wires": [
+            [
+                "295b359b663c7240"
+            ]
+        ]
+    },
+    {
+        "id": "d355ec45141a5904",
+        "type": "comment",
+        "z": "d39855fe4a029e6e",
+        "name": "Paste API Key",
+        "info": "",
+        "x": 330,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "c04ef58c60159b61",
+        "type": "comment",
+        "z": "d39855fe4a029e6e",
+        "name": "Install node-red-contrib-play-audio",
+        "info": "",
+        "x": 560,
+        "y": 140,
+        "wires": []
+    }
+]
