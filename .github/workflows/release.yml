@@ -10,6 +10,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           registry-url: https://registry.npmjs.org/
+          always-auth: true
       - run: |
           yarn global add node-red-nodegen
           node-red-nodegen flows.json --tgz
