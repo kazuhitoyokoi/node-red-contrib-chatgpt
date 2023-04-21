@@ -11,13 +11,13 @@ jobs:
         with:
           registry-url: https://registry.npmjs.org/
       - run: |
-          npm install -g node-red-nodegen
+          yarn install -g node-red-nodegen
           node-red-nodegen flows.json --tgz
           cd node-red-contrib-*/
           cat package.json | jq ".repository.type|=\"git\"|.repository.url|=\"https://github.com/$GITHUB_REPOSITORY.git\"" > tmp; mv tmp package.json
           cat package.json | jq ".bugs.url|=\"https://github.com/$GITHUB_ACTOR\"" > tmp; mv tmp package.json
           mv ../examples . || true
-          npm publish
+          yarn publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
       - uses: softprops/action-gh-release@v1
